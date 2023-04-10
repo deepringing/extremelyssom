@@ -1,0 +1,43 @@
+@import url(//https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css);
+@import "./colors";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  font-family: SUIT, sans-serif;
+}
+
+body {
+  color: black;
+  width: 100vw;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  display: inline-block;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+  display: inline-block;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+input[type="text"] {
+  &:focus {
+    outline: none;
+  }
+}
