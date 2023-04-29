@@ -1,0 +1,64 @@
+@import "../colors";
+
+.wrap {
+  display: flex;
+}
+
+.sidebar {
+  width: 60vw;
+  height: 100vh;
+  background-color: $white001;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 134px;
+    height: 134px;
+  }
+
+  p {
+    font-size: 44px;
+    font-weight: 300;
+    color: $black001;
+  }
+}
+
+.main {
+  width: 40vw;
+  background-color: $white002;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 55px 100px;
+  gap: 50px;
+
+  h1 {
+    font-weight: 700;
+    font-size: 40px;
+  }
+
+  button {
+    width: 100%;
+    background: $white001;
+    padding: 15px 0;
+    border: 1px solid #C2C2C2;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 29px;
+      height: 29px;
+    }
+
+    span {
+      font-weight: 500;
+      font-size: 20px;
+    }
+  }
+}
