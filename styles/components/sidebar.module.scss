@@ -1,0 +1,54 @@
+@import "../colors";
+
+.aside {
+  height: 100vh;
+
+  background-color: $white002;
+  border-radius: 0 40px 40px 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 55px 70px;
+}
+
+.headerWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 75px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  img {
+    width: 50px;
+  }
+
+  p {
+    color: $black001;
+    font-weight: 300;
+    font-size: 44px;
+  }
+}
+
+.teams {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  a {
+    display: block;
+    font-weight: 300;
+    font-size: 25px;
+  }
+}
+
+.addTeam {
+  color: $black001;
+  font-weight: 300;
+  font-size: 25px;
+}
