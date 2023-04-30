@@ -1,9 +1,5 @@
 @import "../colors";
 
-.wrap {
-  display: flex;
-}
-
 .sidebar {
   width: 60vw;
   height: 100vh;
@@ -50,6 +46,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 5px;
 
     img {
       width: 29px;

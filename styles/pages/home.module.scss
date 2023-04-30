@@ -1,0 +1,26 @@
+@import "../colors";
+
+.home {
+  display: flex;
+  flex-direction: column;
+  padding: 55px 85px;
+  gap: 55px;
+  flex: 1;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+
+  p {
+    font-weight: 700;
+    font-size: 40px;
+  }
+}
+
+.goalList {
+  display: flex;
+  column-gap: 4%;
+  row-gap: 25px;
+  flex-wrap: wrap;
+}
