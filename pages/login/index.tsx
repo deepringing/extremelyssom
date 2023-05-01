@@ -9,7 +9,7 @@ export default function Login() {
       </Head>
       <aside className={styles.sidebar}>
         <img src="/images/logo.svg" alt="logo" />
-        <p>다울림</p>
+        <p>SSOM</p>
       </aside>
       <main className={styles.main}>
         <h1>로그인</h1>

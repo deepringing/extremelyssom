@@ -1,0 +1,63 @@
+@import "../colors";
+
+.main {
+  display: flex;
+  flex-direction: column;
+  padding: 55px 85px;
+  gap: 55px;
+  flex: 1;
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .title {
+      font-style: normal;
+      font-weight: 700;
+      font-size: 40px;
+
+      .back {
+        font-weight: 300;
+        font-size: 40px;
+        margin-right: 20px;
+      }
+    }
+    .date {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 30px;
+      color: $black004;
+    }
+  }
+
+  .progress {
+    position: relative;
+    height: 45px;
+    width: 100%;
+    background-color: $gray001;
+    border-radius: 12px;
+
+    .percentage {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background: linear-gradient(90deg, #C2E9FB 4.61%, #A1C4FD 100%);
+      border-radius: 12px;
+
+      .rocket {
+        position: absolute;
+        right: -63px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  .todoList {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+}
