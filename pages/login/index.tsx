@@ -1,7 +1,12 @@
 import Head from 'next/head'
 import styles from '@/styles/pages/login.module.scss'
+import { useQuery } from 'react-query';
+import { GOOGLE_AUTH_LINK } from '@/constants/keys';
+import { getGoogleAuthLink } from '@/apis/auth';
 
 export default function Login() {
+  const { data } = useQuery([GOOGLE_AUTH_LINK], getGoogleAuthLink);
+
   return (
     <>
       <Head>
@@ -13,7 +18,9 @@ export default function Login() {
       </aside>
       <main className={styles.main}>
         <h1>로그인</h1>
-        <button>
+        <button
+          onClick={() => window.location.replace(data!) }
+        >
           <img src="/images/google.png" alt="google" />
           <span>구글 계정으로 로그인</span>
         </button>
