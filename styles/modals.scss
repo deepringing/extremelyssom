@@ -1,0 +1,25 @@
+.ReactModalPortal {
+  position: relative;
+  z-index: 9999;
+
+  .ReactModal__Overlay {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+
+    .ReactModal__Content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 1px solid rgb(204, 204, 204);
+      opacity: 1;
+      overflow: auto;
+      outline: none;
+      background-color: white;
+      border-radius: 12px;
+    }
+  }
+}
+
+.ReactModal__Body--open {
+  overflow: hidden;
+}

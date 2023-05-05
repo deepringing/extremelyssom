@@ -3,6 +3,8 @@ import styles from '@/styles/pages/home.module.scss';
 import SideBar from '@/components/shared/SideBar';
 import TeamMember from '@/components/home/TeamMember';
 import Goal from '@/components/home/Goal';
+import AddMemberModal from '@/components/home/AddMemberModal';
+import { useState } from 'react';
 
 type Props = {
   team: {
@@ -19,6 +21,8 @@ type Props = {
 }
 
 export default function Home() {
+  const [addMemberModalIsOpen, setAddMemberModalOpen] = useState(false);
+
   const data: Props = {
     team: {
       name: "다울림",
@@ -59,6 +63,7 @@ export default function Home() {
           {data.team.memberList &&
             <TeamMember
               team={data.team}
+              addMember={() => setAddMemberModalOpen(true)}
             />
           }
         </div>
@@ -72,6 +77,10 @@ export default function Home() {
           )}
         </div>
       </main>
+      <AddMemberModal
+        isOpen={addMemberModalIsOpen}
+        onRequestClose={() => setAddMemberModalOpen(false)}
+      />
     </>
   )
 }

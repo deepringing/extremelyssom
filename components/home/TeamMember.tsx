@@ -7,8 +7,9 @@ type Props = {
       name: string,
     }[],
   },
+  addMember: () => {},
 }
-export default function TeamMember({ team }: Props) {
+export default function TeamMember({ team, addMember }: Props) {
 
   return (
     <div className={styles.teamMember}>
@@ -25,7 +26,9 @@ export default function TeamMember({ team }: Props) {
         })
         }
       </div>
-      <button className={styles.addMember}>
+      <button className={styles.addMember}
+              onClick={addMember}
+      >
         + 멤버 추가
       </button>
     </div>

@@ -1,0 +1,24 @@
+@import "../colors";
+
+.addMemberModal {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px 48px;
+
+  .title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 140%;
+    letter-spacing: 0.15px;
+    color: $black002;
+  }
+
+  .button {
+    padding: 10px 16px;
+    background-color: $skyblue;
+    color: white;
+    border-radius: 8px;
+  }
+}
