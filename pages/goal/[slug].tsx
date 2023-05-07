@@ -12,7 +12,7 @@ export default function Goal() {
     content: "2023년 버킷리스트",
     createdAt: "2023-01-01",
     completedAt: "2023-12-31",
-    progress: 45,
+    progress: 100,
     todoList: [
       {
         content: "53kg까지 빼기",
@@ -31,7 +31,11 @@ export default function Goal() {
       <main className={styles.main}>
         <div className={styles.header}>
           <div className={styles.title}>
-            <button className={styles.back}>&lt;</button>
+            <button className={styles.back}
+                    onClick={router.back}
+            >
+              &lt;
+            </button>
             {data.content}
           </div>
           <p className={styles.date}>
@@ -44,7 +48,12 @@ export default function Goal() {
                  width: `${data.progress}%`
                }}
           >
-            <img src="/images/rocket.svg" alt="rocket" className={styles.rocket} />
+            <div className={styles.percentageInner}>
+              {
+                data.progress > 25 &&
+                <img src="/images/rocket.svg" alt="rocket" className={styles.rocket} />
+              }
+            </div>
           </div>
         </div>
         <div className={styles.todoList}>

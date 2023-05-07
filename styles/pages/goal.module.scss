@@ -23,6 +23,7 @@
         margin-right: 20px;
       }
     }
+
     .date {
       font-style: normal;
       font-weight: 500;
@@ -43,14 +44,23 @@
       top: 0;
       left: 0;
       height: 100%;
-      background: linear-gradient(90deg, #C2E9FB 4.61%, #A1C4FD 100%);
-      border-radius: 12px;
 
-      .rocket {
+      .percentageInner {
         position: absolute;
-        right: -63px;
-        top: 50%;
-        transform: translateY(-50%);
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(90deg, #C2E9FB 4.61%, #A1C4FD 100%);
+        border-radius: 12px;
+        animation: flow 2s normal forwards;
+
+        .rocket {
+          position: absolute;
+          right: -63px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
       }
     }
   }
@@ -60,4 +70,9 @@
     flex-direction: column;
     gap: 18px;
   }
+}
+
+@keyframes flow {
+  0% { width: 2%; }
+  100% { width: 100%; }
 }
