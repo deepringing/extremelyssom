@@ -2,7 +2,7 @@ import Head from 'next/head'
 import styles from '@/styles/pages/login.module.scss'
 import { useQuery } from 'react-query';
 import { GOOGLE_AUTH_LINK } from '@/constants/keys';
-import { getGoogleAuthLink } from '@/apis/auth';
+import { getGoogleAuthLink } from '@/interfaces/auth/api';
 
 export default function Login() {
   const { data } = useQuery([GOOGLE_AUTH_LINK], getGoogleAuthLink);
