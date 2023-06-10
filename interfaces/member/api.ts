@@ -8,5 +8,5 @@ export interface MemberParams {
 }
 
 export const addMember = async (data: MemberParams) => {
-  return (await server.post('/member/', data, Authorization())).data;
+  return (await server.post('/member', data, Authorization())).data;
 }

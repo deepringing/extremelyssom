@@ -14,8 +14,6 @@ export const getAccessTokenByGoogle = async (code?: string) => {
     throw error;
   }
 
-  console.log(`in api ${code}`);
-
   return (await server.post(`/auth/google/callback`, null, {
     params: {
       code: code,
