@@ -1,7 +1,7 @@
 import styles from "@/styles/components/sidebar.module.scss"
 import Link from 'next/link';
 import { useQuery } from 'react-query';
-import { MY_TEAM } from '@/constants/keys';
+import { MY, TEAM } from '@/constants/keys';
 import { getMyTeam } from '@/interfaces/team/api';
 import { useState } from 'react';
 import AddModal from '@/components/modal/AddModal';
@@ -12,7 +12,7 @@ export default function SideBar() {
   const createTeam = useCreateTeam({
     closeModal: () => setAddTeamModalOpen(false)
   });
-  const { data } = useQuery(MY_TEAM, getMyTeam);
+  const { data } = useQuery([TEAM, MY], getMyTeam);
 
   return (
     <>
@@ -26,7 +26,7 @@ export default function SideBar() {
             <Link href={'/'}>나의 공간</Link>
             {
               data?.teamList.map(t => <>
-                <Link href={`/space/${t.id}`} key={t.id}>
+                <Link href={`/team/${t.id}`} key={t.id}>
                   {t.name}
                 </Link>
               </>)

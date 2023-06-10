@@ -1,0 +1,16 @@
+@import "styles/colors";
+
+.plus {
+  width: 48%;
+  height: 137.5px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $white001;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $white002;
+  }
+}

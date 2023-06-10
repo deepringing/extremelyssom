@@ -1,10 +1,14 @@
 import Head from 'next/head'
 import styles from '@/styles/pages/home.module.scss';
 import SideBar from '@/components/shared/SideBar';
-import TeamMember from '@/components/home/TeamMember';
 import Goal from '@/components/home/Goal';
 import { useState } from 'react';
 import AddModal from '@/components/modal/AddModal';
+import { useQuery } from 'react-query';
+import { getMyGoal } from '@/interfaces/goal/api';
+import { GOAL, MY } from '@/constants/keys';
+import Plus from '@/components/goal/Plus';
+import { useCreateGoal } from '@/hooks/useCreateGoal';
 
 type Props = {
   team: {
@@ -23,37 +27,11 @@ type Props = {
 
 export default function Home() {
   const [addMemberModalIsOpen, setAddMemberModalOpen] = useState(false);
-
-  const data: Props = {
-    team: {
-      name: "다울림",
-      memberList: [{
-        name: "용의딸킹유림",
-      }, {
-        name: "뽕뽕뽕"
-      }]
-    },
-    goalList: [
-      {
-        id: 1,
-        content: "2023 버킷리스트",
-        completedAt: "2023-12-31T15:16:30.431",
-        progress: 44,
-      },
-      {
-        id: 2,
-        content: "2024 버킷리스트",
-        completedAt: "2023-04-31T15:16:30.431",
-        progress: 44,
-      },
-      {
-        id: 3,
-        content: "2025 버킷리스트",
-        completedAt: "2023-05-31T15:16:30.431",
-        progress: 44,
-      },
-    ]
-  }
+  const [addGoalModalIsOpen, setAddGoalModalOpen] = useState(false);
+  const { data } = useQuery([GOAL, MY], getMyGoal);
+  const createGoal = useCreateGoal({
+    closeModal: () => setAddGoalModalOpen(false)
+  });
 
   return (
     <>
@@ -64,15 +42,9 @@ export default function Home() {
       <main className={styles.home}>
         <div className={styles.header}>
           <p>나의 공간</p>
-          {data.team.memberList &&
-            <TeamMember
-              team={data.team}
-              addMember={() => setAddMemberModalOpen(true)}
-            />
-          }
         </div>
         <div className={styles.goalList}>
-          {data.goalList?.map(g =>
+          {data?.goalList.map(g =>
             <Goal
               key={g.id}
               content={g.content}
@@ -80,13 +52,18 @@ export default function Home() {
               progress={g.progress}
             />
           )}
+          <Goal content={"asdfa"} completedAt={new Date().toString()} progress={19} />
+          <Goal content={"asdfa"} completedAt={new Date().toString()} progress={19} />
+          <Plus onClick={() => setAddGoalModalOpen(true)} />
         </div>
       </main>
-      <AddModal
-        title={'다울림에 멤버 추가'}
-        onClick={() => {}}
-        isOpen={addMemberModalIsOpen}
-        onRequestClose={() => setAddMemberModalOpen(false)}
+      <AddModal title={"목표 추가"}
+                onClick={createGoal.mutation.mutate}
+                data={createGoal.data.content}
+                handleChange={createGoal.handleData}
+                name={createGoal.name}
+                isOpen={addGoalModalIsOpen}
+                onRequestClose={() => setAddGoalModalOpen(false)}
       />
     </>
   )
