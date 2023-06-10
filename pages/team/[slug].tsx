@@ -38,13 +38,19 @@ export default function TeamGoal() {
           {/*}*/}
         </div>
         <div className={styles.goalList}>
-          {data?.goalList.map(g =>
-            <Goal
-              key={g.id}
-              content={g.content}
-              completedAt={g.completedAt}
-              progress={g.progress}
-            />
+          {data?.goalList.map((g: {
+              id: number,
+              content: string,
+              completedAt: string,
+              progress: number
+            }) =>
+              <Goal
+                key={g.id}
+                id={g.id}
+                content={g.content}
+                completedAt={g.completedAt}
+                progress={g.progress}
+              />
           )}
         </div>
       </main>

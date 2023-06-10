@@ -21,3 +21,8 @@ export interface GoalParams {
 export const createGoal = async (data: GoalParams) => {
   return (await server.post('/goal', data, Authorization())).data;
 }
+
+// 목표 상세 조회
+export const getGoal = async (id: string) => {
+  return (await server.get(`/goal/${id}`, Authorization())).data;
+}

@@ -3,9 +3,10 @@ import styles from "@/styles/components/todo.module.scss";
 type Props = {
   content: string,
   status: 'STARTED' | 'COMPLETED' | 'DELETED'
+  id: number
 }
 
-export default function Todo({ content, status }: Props) {
+export default function Todo({ content, status, id }: Props) {
 
   return (
     <>

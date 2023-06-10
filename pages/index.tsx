@@ -36,6 +36,7 @@ export default function MyGoal() {
             }) =>
               <Goal
                 key={g.id}
+                id={g.id}
                 content={g.content}
                 completedAt={g.completedAt}
                 progress={g.progress}

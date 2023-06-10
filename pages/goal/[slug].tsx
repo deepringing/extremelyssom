@@ -3,30 +3,25 @@ import { useRouter } from 'next/router';
 import SideBar from '@/components/shared/SideBar';
 import { dateBefore } from '@/utils/DateTimeFormatter';
 import Todo from '@/components/goal/Todo';
+import { useQuery } from 'react-query';
+import { GOAL } from '@/constants/keys';
+import { getGoal } from '@/interfaces/goal/api';
+import Head from 'next/head';
+import { useAddTodo } from '@/hooks/useAddTodo';
 
 export default function Goal() {
   const router = useRouter();
   const { slug } = router.query;
-
-  const data = {
-    content: "2023년 버킷리스트",
-    createdAt: "2023-01-01",
-    completedAt: "2023-12-31",
-    progress: 100,
-    todoList: [
-      {
-        content: "53kg까지 빼기",
-        status: "COMPLETED"
-      },
-      {
-        content: "54kg까지 빼기",
-        status: "STARTED"
-      }
-    ]
-  }
+  const { data } = useQuery([GOAL, slug], () => getGoal(slug));
+  const addTodo = useAddTodo({
+    goalId: slug
+  });
 
   return (
     <>
+      <Head>
+        <title>{data?.content} | 쏨</title>
+      </Head>
       <SideBar />
       <main className={styles.main}>
         <div className={styles.header}>
@@ -36,33 +31,48 @@ export default function Goal() {
             >
               &lt;
             </button>
-            {data.content}
+            {data?.content}
           </div>
           <p className={styles.date}>
-            {data.createdAt} ~ {data.completedAt} ({dateBefore(data.completedAt)})
+            {data?.createdAt.substr(0, 10)} ~ {data?.completedAt} ({dateBefore(data?.completedAt)})
           </p>
         </div>
         <div className={styles.progress}>
           <div className={styles.percentage}
                style={{
-                 width: `${data.progress}%`
+                 width: `${data?.progress}%`
                }}
           >
             <div className={styles.percentageInner}>
               {
-                data.progress > 25 &&
+                data?.progress > 25 &&
                 <img src="/images/rocket.svg" alt="rocket" className={styles.rocket} />
               }
             </div>
           </div>
         </div>
         <div className={styles.todoList}>
-          {data.todoList.map(t => (
+          {data?.todoList.map((t: {
+            content: string,
+            status: 'STARTED' | 'COMPLETED' | 'DELETED'
+            id: number
+          }) => (
             <Todo
+              key={t.id}
+              id={t.id}
               content={t.content}
               status={t.status}
             />
           ))}
+          <input
+            type="text"
+            value={addTodo.data.content}
+            onKeyPress={addTodo.onEnter}
+            onChange={addTodo.handleData}
+            name="content"
+            className={styles.input}
+            placeholder="+ 할 일 추가하기"
+          />
         </div>
       </main>
     </>

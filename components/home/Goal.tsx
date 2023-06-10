@@ -3,14 +3,15 @@ import { dateBefore } from '@/utils/DateTimeFormatter';
 import Link from 'next/link';
 
 type Props = {
+  id: number,
   content: string,
   completedAt: string,
   progress: number,
 };
 
-export default function Goal({ content, completedAt, progress }: Props) {
+export default function Goal({ id, content, completedAt, progress }: Props) {
   return (
-    <Link href={`/goal/${content}`} className={styles.goal}>
+    <Link href={`/goal/${id}`} className={styles.goal}>
       <div className={styles.progress}>
         <div className={styles.percentage}
              style={{
