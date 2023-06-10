@@ -1,7 +1,7 @@
 // 팀 추가
 import { useMutation, useQueryClient } from 'react-query';
 import { createTeam, TeamParams } from '@/interfaces/team/api';
-import { MY_TEAM } from '@/constants/keys';
+import { MY, TEAM } from '@/constants/keys';
 
 export const useCreateTeamMutation = ({ closeModal, data }: {
   closeModal: () => void,
@@ -11,7 +11,7 @@ export const useCreateTeamMutation = ({ closeModal, data }: {
 
   return useMutation(() => createTeam(data), {
     onSuccess: () => {
-      queryClient.invalidateQueries(MY_TEAM);
+      queryClient.invalidateQueries([TEAM, MY]);
       closeModal();
     }
   })

@@ -8,13 +8,17 @@ import { TEAM } from '@/constants/keys';
 import { getTeamGoal } from '@/interfaces/goal/api';
 import AddModal from '@/components/modal/AddModal';
 import { useState } from 'react';
+import { useAddMember } from '@/hooks/useAddMember';
 
 export default function TeamGoal() {
   const router = useRouter();
   const { slug } = router.query;
-  console.log(slug);
   const { data } = useQuery([TEAM, slug], () => getTeamGoal(slug));
   const [addMemberModalIsOpen, setAddMemberModalOpen] = useState(false);
+  const addMember = useAddMember({
+    closeModal: () => setAddMemberModalOpen(false),
+    teamId: slug
+  });
 
   return (
     <>
@@ -49,7 +53,14 @@ export default function TeamGoal() {
         onClick={() => {}}
         isOpen={addMemberModalIsOpen}
         onRequestClose={() => setAddMemberModalOpen(false)}
-      />
+      >
+        <input
+          type={"text"}
+          value={addMember.data.email}
+          onChange={addMember.handleData}
+          name={addMember.name}
+        />
+      </AddModal>
     </>
   )
 }
