@@ -14,7 +14,8 @@ export const getMyGoal = async () => {
 // 목표 생성
 export interface GoalParams {
   content: string,
-  teamId?: string
+  completedAt: string,
+  teamId?: string,
 }
 
 export const createGoal = async (data: GoalParams) => {

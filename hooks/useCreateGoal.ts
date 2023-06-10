@@ -6,11 +6,10 @@ export const useCreateGoal = ({ closeModal, teamId }: {
   closeModal: () => void,
   teamId?: string
 }) => {
-  const name = "content";
-
   const [data, setData] = useState<GoalParams>({
     content: "",
-    teamId: teamId
+    teamId: teamId,
+    completedAt: ""
   });
 
   const handleData = (e: ChangeEvent<HTMLInputElement>) => {
@@ -25,5 +24,5 @@ export const useCreateGoal = ({ closeModal, teamId }: {
     data: data
   });
 
-  return { name, data, handleData, mutation };
+  return { data, handleData, mutation };
 };

@@ -53,7 +53,15 @@ export default function MyGoal() {
           type={"text"}
           value={createGoal.data.content}
           onChange={createGoal.handleData}
-          name={createGoal.name}
+          name={"content"}
+          placeholder={"내용"}
+        />
+        <input
+          type={"text"}
+          value={createGoal.data.completedAt}
+          onChange={createGoal.handleData}
+          name={"completedAt"}
+          placeholder={"완료일 YYYY-MM-DD"}
         />
       </AddModal>
     </>
