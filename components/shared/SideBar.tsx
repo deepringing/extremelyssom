@@ -25,7 +25,10 @@ export default function SideBar() {
           <div className={styles.teams}>
             <Link href={'/'}>나의 공간</Link>
             {
-              data?.teamList.map(t => <>
+              data?.teamList.map((t: {
+                id: number,
+                name: string
+              }) => <>
                 <Link href={`/team/${t.id}`} key={t.id}>
                   {t.name}
                 </Link>

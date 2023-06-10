@@ -28,13 +28,18 @@ export default function MyGoal() {
           <p>나의 공간</p>
         </div>
         <div className={styles.goalList}>
-          {data?.goalList.map(g =>
-            <Goal
-              key={g.id}
-              content={g.content}
-              completedAt={g.completedAt}
-              progress={g.progress}
-            />
+          {data?.goalList.map((g: {
+              id: number,
+              content: string,
+              completedAt: string,
+              progress: number
+            }) =>
+              <Goal
+                key={g.id}
+                content={g.content}
+                completedAt={g.completedAt}
+                progress={g.progress}
+              />
           )}
           <Plus onClick={() => setAddGoalModalOpen(true)} />
         </div>
