@@ -1,16 +1,14 @@
 import styles from "@/styles/components/add-modal.module.scss";
 import Modal from "react-modal";
-import { ChangeEvent } from 'react';
+import { ReactNode } from 'react';
 
 interface Props extends Modal.Props {
   title: string,
   onClick: () => void,
-  data: string,
-  handleChange: (e: ChangeEvent<HTMLInputElement>) => void
-  name: string
+  children: ReactNode
 }
 
-export default function AddModal({ title, onClick, data, handleChange, name, isOpen, onRequestClose }: Props) {
+export default function AddModal({ title, onClick, children, isOpen, onRequestClose }: Props) {
 
   return (
     <Modal
@@ -21,13 +19,7 @@ export default function AddModal({ title, onClick, data, handleChange, name, isO
       <p className={styles.title}>
         {title}
       </p>
-      <input
-        type={"text"}
-        value={data}
-        onChange={handleChange}
-        className={styles.input}
-        name={name}
-      />
+      {children}
       <button className={styles.button} onClick={onClick}>
         확인
       </button>

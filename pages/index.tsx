@@ -41,12 +41,16 @@ export default function MyGoal() {
       </main>
       <AddModal title={"목표 추가"}
                 onClick={createGoal.mutation.mutate}
-                data={createGoal.data.content}
-                handleChange={createGoal.handleData}
-                name={createGoal.name}
                 isOpen={addGoalModalIsOpen}
                 onRequestClose={() => setAddGoalModalOpen(false)}
-      />
+      >
+        <input
+          type={"text"}
+          value={createGoal.data.content}
+          onChange={createGoal.handleData}
+          name={createGoal.name}
+        />
+      </AddModal>
     </>
   )
 }

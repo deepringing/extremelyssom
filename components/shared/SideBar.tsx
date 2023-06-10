@@ -43,11 +43,15 @@ export default function SideBar() {
         title={"팀 추가"}
         onClick={createTeam.mutation.mutate}
         isOpen={addTeamModalIsOpen}
-        data={createTeam.data.name}
-        handleChange={createTeam.handleData}
-        name={createTeam.name}
         onRequestClose={() => setAddTeamModalOpen(false)}
-      />
+      >
+        <input
+          type={"text"}
+          value={createTeam.data.name}
+          onChange={createTeam.handleData}
+          name={createTeam.name}
+        />
+      </AddModal>
     </>
   )
 }
