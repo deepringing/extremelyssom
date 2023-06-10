@@ -7,7 +7,7 @@ type Props = {
       name: string,
     }[],
   },
-  addMember: () => {},
+  addMember: () => void,
 }
 export default function TeamMember({ team, addMember }: Props) {
 
@@ -17,7 +17,7 @@ export default function TeamMember({ team, addMember }: Props) {
         {team.memberList?.map((m, index) => {
           if (index < 5) {
             return (
-              <div className={styles.profile}
+              <div className={styles.profile} key={index}
                    style={{ backgroundColor: "#" + Math.round(Math.random() * 0xffffff).toString(16) }}>
                 {m.name[0]}
               </div>

@@ -1,6 +1,6 @@
 @import "../colors";
 
-.addMemberModal {
+.addModal {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -13,6 +13,11 @@
     line-height: 140%;
     letter-spacing: 0.15px;
     color: $black002;
+  }
+
+  .input {
+    border-bottom: 1px solid $black001;
+
   }
 
   .button {

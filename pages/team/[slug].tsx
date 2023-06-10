@@ -3,8 +3,9 @@ import styles from '@/styles/pages/home.module.scss';
 import SideBar from '@/components/shared/SideBar';
 import TeamMember from '@/components/home/TeamMember';
 import Goal from '@/components/home/Goal';
+import AddMemberModal from '@/components/modal/AddMemberModal';
 import { useState } from 'react';
-import AddModal from '@/components/modal/AddModal';
+import { useRouter } from 'next/router';
 
 type Props = {
   team: {
@@ -13,7 +14,7 @@ type Props = {
       name: string,
     }[],
   },
-  goalList?: {
+  goalList: {
     id: number,
     content: string,
     completedAt: string,
@@ -22,6 +23,8 @@ type Props = {
 }
 
 export default function Home() {
+  const router = useRouter();
+  const { slug } = router.query;
   const [addMemberModalIsOpen, setAddMemberModalOpen] = useState(false);
 
   const data: Props = {
@@ -58,13 +61,13 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>나의 공간 | 쏨</title>
+        <title>{data.team.name} | 쏨</title>
       </Head>
       <SideBar />
       <main className={styles.home}>
         <div className={styles.header}>
-          <p>나의 공간</p>
-          {data.team.memberList &&
+          <p>{data?.team.name}</p>
+          {data?.team.memberList &&
             <TeamMember
               team={data.team}
               addMember={() => setAddMemberModalOpen(true)}
@@ -72,7 +75,7 @@ export default function Home() {
           }
         </div>
         <div className={styles.goalList}>
-          {data.goalList?.map(g =>
+          {data?.goalList.map(g =>
             <Goal
               key={g.id}
               content={g.content}
@@ -82,9 +85,7 @@ export default function Home() {
           )}
         </div>
       </main>
-      <AddModal
-        title={'다울림에 멤버 추가'}
-        onClick={() => {}}
+      <AddMemberModal
         isOpen={addMemberModalIsOpen}
         onRequestClose={() => setAddMemberModalOpen(false)}
       />
