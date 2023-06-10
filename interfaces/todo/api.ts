@@ -10,3 +10,8 @@ export interface TodoParams {
 export const addTodo = async (data: TodoParams) => {
   return (await server.post('/todo', data, Authorization())).data;
 }
+
+// 할 일 상태 토글
+export const toggleTodo = async (id: string) => {
+  return (await server.patch(`/todo/${id}/toggle`, Authorization())).data;
+}

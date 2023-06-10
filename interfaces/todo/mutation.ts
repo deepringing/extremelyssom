@@ -1,4 +1,4 @@
-import { addTodo, TodoParams } from '@/interfaces/todo/api';
+import { addTodo, TodoParams, toggleTodo } from '@/interfaces/todo/api';
 import { useMutation, useQueryClient } from 'react-query';
 import { GOAL } from '@/constants/keys';
 
@@ -13,6 +13,17 @@ export const useAddTodoMutation = ({ clearData, data }: {
     onSuccess: () => {
       queryClient.invalidateQueries([GOAL, data.goalId]);
       clearData();
+    }
+  })
+}
+
+// 할 일 토글
+export const useToggleTodoMutation = (goalId: string) => {
+  const queryClient = useQueryClient();
+
+  return useMutation((todoId: string) => toggleTodo(todoId), {
+    onSuccess: () => {
+      queryClient.invalidateQueries([GOAL, goalId]);
     }
   })
 }

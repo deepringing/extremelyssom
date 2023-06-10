@@ -8,6 +8,7 @@ import { GOAL } from '@/constants/keys';
 import { getGoal } from '@/interfaces/goal/api';
 import Head from 'next/head';
 import { useAddTodo } from '@/hooks/useAddTodo';
+import { useToggleTodoMutation } from '@/interfaces/todo/mutation';
 
 export default function Goal() {
   const router = useRouter();
@@ -16,6 +17,7 @@ export default function Goal() {
   const addTodo = useAddTodo({
     goalId: slug
   });
+  const toggleMutation = useToggleTodoMutation(slug);
 
   return (
     <>
@@ -62,6 +64,7 @@ export default function Goal() {
               id={t.id}
               content={t.content}
               status={t.status}
+              toggle={() => toggleMutation.mutate(String(t.id))}
             />
           ))}
           <input
