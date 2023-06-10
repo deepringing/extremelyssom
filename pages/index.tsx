@@ -10,23 +10,7 @@ import { GOAL, MY } from '@/constants/keys';
 import Plus from '@/components/goal/Plus';
 import { useCreateGoal } from '@/hooks/useCreateGoal';
 
-type Props = {
-  team: {
-    name: string,
-    memberList?: {
-      name: string,
-    }[],
-  },
-  goalList?: {
-    id: number,
-    content: string,
-    completedAt: string,
-    progress: number,
-  }[]
-}
-
-export default function Home() {
-  const [addMemberModalIsOpen, setAddMemberModalOpen] = useState(false);
+export default function MyGoal() {
   const [addGoalModalIsOpen, setAddGoalModalOpen] = useState(false);
   const { data } = useQuery([GOAL, MY], getMyGoal);
   const createGoal = useCreateGoal({
@@ -52,8 +36,6 @@ export default function Home() {
               progress={g.progress}
             />
           )}
-          <Goal content={"asdfa"} completedAt={new Date().toString()} progress={19} />
-          <Goal content={"asdfa"} completedAt={new Date().toString()} progress={19} />
           <Plus onClick={() => setAddGoalModalOpen(true)} />
         </div>
       </main>
