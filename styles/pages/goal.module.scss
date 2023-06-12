@@ -44,6 +44,7 @@
       top: 0;
       left: 0;
       height: 100%;
+      transition: width 1s;
 
       .percentageInner {
         position: absolute;
@@ -60,6 +61,7 @@
           right: -63px;
           top: 50%;
           transform: translateY(-50%);
+          width: 220px;
         }
       }
     }

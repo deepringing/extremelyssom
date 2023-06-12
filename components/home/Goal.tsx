@@ -15,7 +15,8 @@ export default function Goal({ id, content, completedAt, progress }: Props) {
       <div className={styles.progress}>
         <div className={styles.percentage}
              style={{
-               width: `${progress}%`
+               width: `${progress}%`,
+               borderTopRightRadius: progress == 100 ? '30px' : '0'
              }}
         />
       </div>

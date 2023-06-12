@@ -42,13 +42,17 @@ export default function Goal() {
         <div className={styles.progress}>
           <div className={styles.percentage}
                style={{
-                 width: `${data?.progress}%`
+                 width: `${data?.percentage}%`
                }}
           >
             <div className={styles.percentageInner}>
               {
-                data?.progress > 25 &&
-                <img src="/images/rocket.svg" alt="rocket" className={styles.rocket} />
+                data?.percentage > 15 && data?.todoList.length > 5 ?
+                  <img src="/images/rocket.svg" alt="rocket" className={styles.rocket} />
+                  :
+                  <img
+                    src="/images/arrow.png"
+                    alt="arrow" className={styles.rocket} />
               }
             </div>
           </div>

@@ -49,14 +49,14 @@ export default function TeamGoal() {
               id: number,
               content: string,
               completedAt: string,
-              progress: number
+              percentage: number
             }) =>
               <Goal
                 key={g.id}
                 id={g.id}
                 content={g.content}
                 completedAt={g.completedAt}
-                progress={g.progress}
+                progress={g.percentage}
               />
           )}
           <Plus onClick={() => setAddGoalModalOpen(true)} />
